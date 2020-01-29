@@ -5,6 +5,9 @@
 const AppConfig = require("./configurations/appConfig");
 const amqp = require("amqplib/callback_api");
 
+// Imports the Google Cloud client library
+const { Translate } = require('@google-cloud/translate').v2;
+
 // Override console to enable papertrail
 const console = require("./logger");
 
@@ -38,23 +41,38 @@ const console = require("./logger");
             (msg) => {
               var payload = JSON.parse(msg.content);
 
-              // Return data
-              channel.sendToQueue(
-                msg.properties.replyTo,
-                Buffer.from(JSON.stringify(payload)),
-                {
-                  expiration: 10000,
-                  contentType: "application/json",
-                  correlationId: msg.properties.correlationId
-                }
-              );
+              const projectId = 'nlb-babel-dev';
+
+              // Instantiates a client
+              const translate = new Translate({ projectId });
+
+              // Translates the text
+              translate.translate(payload.text, payload.to).then(results => {
+                const [translated] = results;
+                let parsed = {
+                  text: payload.text,
+                  to: payload.to,
+                  translated: translated
+                };
+
+                // Return data
+                channel.sendToQueue(
+                  msg.properties.replyTo,
+                  Buffer.from(JSON.stringify(parsed)),
+                  {
+                    expiration: 10000,
+                    contentType: "application/json",
+                    correlationId: msg.properties.correlationId
+                  }
+                );
+              });
             },
             {
               noAck: false
             }
           );
         }
-        catch(ex) {
+        catch (ex) {
           throw ex;
         }
       });

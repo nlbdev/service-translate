@@ -4,6 +4,7 @@
   "description": "A microservice for translating strings",
   "main": "receive.js",
   "dependencies": {
+    "@google-cloud/translate": "^5.1.4",
     "@hapi/hapi": "^18.3.1",
     "airbrake-js": "^2.0.0-beta.3",
     "amqplib": "^0.5.5",
