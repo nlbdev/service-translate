@@ -6,7 +6,10 @@ const AppConfig = require("./configurations/appConfig");
 const amqp = require("amqplib/callback_api");
 
 // Imports the Google Cloud client library
-const { Translate } = require('@google-cloud/translate').v2;
+const { TranslationServiceClient } = require('@google-cloud/translate');
+const location = 'us-central1';
+const projectId = (process.env.NODE_ENV == "production" ? 'nlb-babel-prod' : 'nlb-babel-dev');
+const modelId = 'nlb-math';
 
 // Override console to enable papertrail
 const console = require("./logger");
@@ -15,6 +18,28 @@ const console = require("./logger");
   "use strict";
 
   var Health = require("./health");
+
+  const translateText = async (inputText, toLanguage) => {
+    const translationClient = new TranslationServiceClient();
+
+    // Construct request
+    const request = {
+      parent: `projects/${projectId}/locations/${location}`,
+      contents: [inputText],
+      mimeType: 'text/plain',
+      sourceLanguageCode: 'en',
+      targetLanguageCode: toLanguage,
+      model: `projects/${projectId}/locations/${location}/models/${modelId}`,
+    };
+
+    try {
+      // Run request
+      const [translations] = await translationClient.translateText(request);
+      return translations;
+    } catch (error) {
+      return error;
+    }
+  };
 
   // Give the MQ 10 seconds to get started
   setTimeout(() => {
@@ -41,31 +66,24 @@ const console = require("./logger");
             (msg) => {
               var payload = JSON.parse(msg.content);
 
-              const projectId = 'nlb-babel-dev';
-
-              // Instantiates a client
-              const translate = new Translate({ projectId });
-
-              // Translates the text
-              translate.translate(payload.text, payload.to).then(results => {
-                const [translated] = results;
-                let parsed = {
-                  text: payload.text,
-                  to: payload.to,
-                  translated: translated
-                };
-
-                // Return data
-                channel.sendToQueue(
-                  msg.properties.replyTo,
-                  Buffer.from(JSON.stringify(parsed)),
-                  {
-                    expiration: 10000,
-                    contentType: "application/json",
-                    correlationId: msg.properties.correlationId
-                  }
-                );
-              });
+              console.log(msg);
+              if(payload != undefined) {
+                translateText(payload.text, payload.to)
+                .then(res => {
+                  console.log(`Translated: ${res}`);
+                  // Return data
+                  channel.sendToQueue(
+                    msg.properties.replyTo,
+                    Buffer.from(JSON.stringify(res)),
+                    {
+                      expiration: 10000,
+                      contentType: "application/json",
+                      correlationId: msg.properties.correlationId
+                    }
+                  );
+                })
+                .catch(err => err);
+              }
             },
             {
               noAck: false
@@ -77,7 +95,7 @@ const console = require("./logger");
         }
       });
     });
-  }, (process.env.NODE_ENV == "development" ? 1000 : 10000));
+  }, 10000);
 
   /*var airbrake = new AirbrakeClient({
     projectId: process.env.AIRBRAKE_PROJECT_ID,
