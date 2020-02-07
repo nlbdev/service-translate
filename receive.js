@@ -7,9 +7,41 @@ const amqp = require("amqplib/callback_api");
 
 // Imports the Google Cloud client library
 const { TranslationServiceClient } = require('@google-cloud/translate');
-const location = 'us-central1';
-const projectId = (process.env.NODE_ENV == "production" ? 'nlb-babel-prod' : 'nlb-babel-dev');
-const modelId = 'nlb-math';
+const norwegianML = {
+  projectId: (process.env.NODE_ENV == "production" ? 335447755176 : 'nlb-babel-dev'),
+  modelId: 'TRL7124918910872190976',
+  location: 'us-central1'
+};
+const swedishML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
+const danishML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
+const finnishML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
+const icelandicML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
+const dutchML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
+const swissML = {
+  projectId: '',
+  modelId: '',
+  location: 'us-central1'
+};
 
 // Override console to enable papertrail
 const console = require("./logger");
@@ -19,22 +51,38 @@ const console = require("./logger");
 
   var Health = require("./health");
 
-  const translateText = async (inputText, toLanguage) => {
+  const GenerateRequest = (inputText, language) => {
+    if(language == "no") {
+      return {
+        parent: `projects/${norwegianML.projectId}/locations/${norwegianML.location}`,
+        contents: inputText,
+        mimeType: 'text/plain',
+        sourceLanguageCode: "en",
+        targetLanguageCode: language,
+        model: `projects/${norwegianML.projectId}/locations/${norwegianML.location}/models/${norwegianML.modelId}`,
+      };
+    }
+    else {
+      return {
+        parent: `projects/${norwegianML.projectId}/locations/${norwegianML.location}`,
+        contents: inputText,
+        mimeType: 'text/plain',
+        sourceLanguageCode: 'en',
+        targetLanguageCode: language,
+      };
+    }
+  };
+
+  const TranslateText = async (inputText, toLanguage) => {
+    if(toLanguage == "en") return inputText.join(" ");
     const translationClient = new TranslationServiceClient();
 
     // Construct request
-    const request = {
-      parent: `projects/${projectId}/locations/${location}`,
-      contents: [inputText],
-      mimeType: 'text/plain',
-      sourceLanguageCode: 'en',
-      targetLanguageCode: toLanguage,
-      model: `projects/${projectId}/locations/${location}/models/${modelId}`,
-    };
+    const request = GenerateRequest(inputText, toLanguage);
 
     try {
       // Run request
-      const [translations] = await translationClient.translateText(request);
+      let [ translations ] = await translationClient.translateText(request);
       return translations;
     } catch (error) {
       return error;
@@ -66,15 +114,13 @@ const console = require("./logger");
             (msg) => {
               var payload = JSON.parse(msg.content);
 
-              console.log(msg);
               if(payload != undefined) {
-                translateText(payload.text, payload.to)
+                TranslateText(payload.text.words, payload.to)
                 .then(res => {
-                  console.log(`Translated: ${res}`);
                   // Return data
                   channel.sendToQueue(
                     msg.properties.replyTo,
-                    Buffer.from(JSON.stringify(res)),
+                    Buffer.from(JSON.stringify(res.translations)),
                     {
                       expiration: 10000,
                       contentType: "application/json",
