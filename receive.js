@@ -127,6 +127,7 @@ const console = require("./logger");
                       correlationId: msg.properties.correlationId
                     }
                   );
+                  channel.ack(msg);
                 })
                 .catch(err => err);
               }
