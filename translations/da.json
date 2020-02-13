@@ -1,0 +1,18 @@
+[
+    { 
+        "search": " jeg",
+        "replace": " i"
+    },
+    { 
+        "search": " til kraften i",
+        "replace": " ophøjet i"
+    },
+    { 
+        "search": " til kraften til",
+        "replace": " ophøjet i"
+    },
+    { 
+        "search": " til kraften av",
+        "replace": " ophøjet i"
+    }
+]

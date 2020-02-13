@@ -1,0 +1,18 @@
+[
+    { 
+        "search": " left parenthesis matrix start,",
+        "replace": " matrix start"
+    },
+    { 
+        "search": " matrix end right parenthesis",
+        "replace": " matrix end"
+    },
+    { 
+        "search": " capital degrees",
+        "replace": " degrees"
+    },
+    { 
+        "search": " to the power of 2",
+        "replace": " squared"
+    }
+]

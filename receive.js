@@ -51,8 +51,25 @@ const console = require("./logger");
 
   var Health = require("./health");
 
+  const PostProcessText = (text, lang) => {
+    try {
+      const postProcess = require(`./translations/${lang}.json`);
+      postProcess.forEach(p => {
+        var regexp = new RegExp(p.search, 'g');
+        text = text.replace(regexp, p.replace);
+        regexp = null;
+      });
+  
+      return text;
+    }
+    catch (ex) {
+      // File not found, just return the text
+      return text;
+    }
+  }
+
   const GenerateRequest = (inputText, language) => {
-    if(language == "no") {
+    if (language == "no") {
       return {
         parent: `projects/${norwegianML.projectId}/locations/${norwegianML.location}`,
         contents: inputText,
@@ -74,7 +91,7 @@ const console = require("./logger");
   };
 
   const TranslateText = async (inputText, toLanguage) => {
-    if(toLanguage == "en") return inputText.join(" ");
+    if (toLanguage == "en") return inputText.join(" ");
     const translationClient = new TranslationServiceClient();
 
     // Construct request
@@ -82,8 +99,14 @@ const console = require("./logger");
 
     try {
       // Run request
-      let [ translations ] = await translationClient.translateText(request);
-      return translations;
+      let [t] = await translationClient.translateText(request);
+
+      let translatedArray = [];
+      t.translations.forEach(txt => {
+        translatedArray.push(txt.translatedText);
+      });
+      let translatedText = translatedArray.join(" ");
+      return PostProcessText(translatedText, toLanguage);
     } catch (error) {
       return error;
     }
@@ -112,24 +135,28 @@ const console = require("./logger");
           channel.consume(
             queue,
             (msg) => {
+              let now = new Date();
               var payload = JSON.parse(msg.content);
 
-              if(payload != undefined) {
+              if (payload != undefined) {
+                console.info(` [ INFO ] Translated from: "${payload.text.words.join(" ")}"`);
                 TranslateText(payload.text.words, payload.to)
-                .then(res => {
-                  // Return data
-                  channel.sendToQueue(
-                    msg.properties.replyTo,
-                    Buffer.from(JSON.stringify(res.translations)),
-                    {
-                      expiration: 10000,
-                      contentType: "application/json",
-                      correlationId: msg.properties.correlationId
-                    }
-                  );
-                  channel.ack(msg);
-                })
-                .catch(err => err);
+                  .then(res => {
+                    console.info(` [ INFO ] Translated to: "${res}"`);
+                    // Return data
+                    channel.sendToQueue(
+                      msg.properties.replyTo,
+                      Buffer.from(JSON.stringify(res)),
+                      {
+                        expiration: 10000,
+                        contentType: "application/json",
+                        correlationId: msg.properties.correlationId
+                      }
+                    );
+                    console.info(` [ SUCCESS ] Done in ${new Date() - now} ms`);
+                    channel.ack(msg);
+                  })
+                  .catch(err => err);
               }
             },
             {
@@ -142,11 +169,5 @@ const console = require("./logger");
         }
       });
     });
-  }, 10000);
-
-  /*var airbrake = new AirbrakeClient({
-    projectId: process.env.AIRBRAKE_PROJECT_ID,
-    projectKey: process.env.AIRBRAKE_PROJECT_KEY,
-    environment: process.env.NODE_ENV || "development"
-  });*/
+  }, 1000);
 })();

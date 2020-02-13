@@ -1,0 +1,58 @@
+[
+    { 
+        "search": " venstre parentes matrisestart",
+        "replace": " matrise start"
+    },
+    { 
+        "search": " matrix slutt høyre parentes",
+        "replace": " matrise slutt"
+    },
+    { 
+        "search": " funksjonsenden",
+        "replace": " funksjon slutt"
+    },
+    { 
+        "search": " funksjonen slutten",
+        "replace": " funksjon slutt"
+    },
+    { 
+        "search": " formelende",
+        "replace": " formel slutt"
+    },
+    { 
+        "search": " brøkden ende",
+        "replace": " brøk slutt"
+    },
+    { 
+        "search": " brøkdel slutt",
+        "replace": " brøk slutt"
+    },
+    { 
+        "search": " ende",
+        "replace": " slutt"
+    },
+    { 
+        "search": " til kraften i",
+        "replace": " opphøyd i"
+    },
+    { 
+        "search": " til kraften til",
+        "replace": " opphøyd i"
+    },
+    { 
+        "search": " til kraften av",
+        "replace": " opphøyd i"
+    },
+    { 
+        "search": " opphøyd i 2",
+        "replace": " i annen"
+    },
+    { 
+        "search": " kapital",
+        "replace": " stor"
+    },
+    { 
+        "search": " stor grader",
+        "replace": " grader"
+    }
+]
