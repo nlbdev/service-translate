@@ -1,5 +1,13 @@
 [
     { 
+        "search": " expression end derivative",
+        "replace": " expression end"
+    },
+    { 
+        "search": " expression end double derivative",
+        "replace": " expression end"
+    },
+    { 
         "search": " left parenthesis matrix start,",
         "replace": " matrix start"
     },

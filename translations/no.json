@@ -4,6 +4,14 @@
         "replace": " matrise start"
     },
     { 
+        "search": " venstre parentes matrise start",
+        "replace": " matrise start"
+    },
+    { 
+        "search": " matrise slutt høyre parentes",
+        "replace": " matrise slutt"
+    },
+    { 
         "search": " matrix slutt høyre parentes",
         "replace": " matrise slutt"
     },
@@ -54,5 +62,21 @@
     { 
         "search": " stor grader",
         "replace": " grader"
+    },
+    { 
+        "search": " slutt ",
+        "replace": " slutt, "
+    },
+    {
+        "search": " lett ",
+        "replace": " lys "
+    },
+    {
+        "search": " nærmer seg ",
+        "replace": " går mot "
+    }, 
+    {
+        "search": " med lavere indeks ",
+        "replace": " med nedre indeks "
     }
 ]
