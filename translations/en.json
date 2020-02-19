@@ -14,5 +14,13 @@
     { 
         "search": " to the power of 2",
         "replace": " squared"
+    },
+    { 
+        "search": " equals",
+        "replace": ", equals"
+    },
+    { 
+        "search": " end ",
+        "replace": " end, "
     }
 ]

@@ -91,7 +91,7 @@ const console = require("./logger");
   };
 
   const TranslateText = async (inputText, toLanguage) => {
-    if (toLanguage == "en") return inputText.join(" ");
+    if (toLanguage == "en") return PostProcessText(inputText.join(" "), toLanguage);
     const translationClient = new TranslationServiceClient();
 
     // Construct request
