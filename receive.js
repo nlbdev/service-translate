@@ -9,7 +9,7 @@ const amqp = require("amqplib/callback_api");
 const { TranslationServiceClient } = require('@google-cloud/translate');
 const nlbML = {
   projectId: (process.env.NODE_ENV == "production" ? 707390927748 : 335447755176),
-  modelId: 'TRL5591161762775826432',
+  modelId: (process.env.NODE_ENV == "production" ? 'TRL5131196466458525696': 'TRL5591161762775826432'),
   location: 'us-central1'
 };
 const mtmML = {
