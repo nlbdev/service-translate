@@ -8,7 +8,7 @@ const amqp = require("amqplib/callback_api");
 // Imports the Google Cloud client library
 const { TranslationServiceClient } = require('@google-cloud/translate');
 const nlbML = {
-  projectId: (process.env.NODE_ENV == "production" ? 707390927748 : 335447755176),
+  projectId: (process.env.NODE_ENV == "production" ? 'nlb-babel-prod' : 'nlb-babel-dev'),
   modelId: (process.env.NODE_ENV == "production" ? 'TRL5131196466458525696': 'TRL5591161762775826432'),
   location: 'us-central1'
 };
