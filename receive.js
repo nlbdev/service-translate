@@ -7,41 +7,6 @@ const amqp = require("amqplib/callback_api");
 
 // Imports the Google Cloud client library
 const { TranslationServiceClient } = require('@google-cloud/translate');
-const nlbML = {
-  projectId: (process.env.NODE_ENV == "production" ? 'nlb-babel-prod' : 'nlb-babel-dev'),
-  modelId: (process.env.NODE_ENV == "production" ? 'TRL5131196466458525696': 'TRL5591161762775826432'),
-  location: 'us-central1'
-};
-const mtmML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
-const notaML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
-const celiaML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
-const hbsML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
-const dediconML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
-const sbsML = {
-  projectId: '',
-  modelId: '',
-  location: 'us-central1'
-};
 
 // Override console to enable papertrail
 const console = require("./logger");
@@ -71,17 +36,17 @@ const console = require("./logger");
   const GenerateRequest = (inputText, language) => {
     if (language == "no") {
       return {
-        parent: `projects/${nlbML.projectId}/locations/${nlbML.location}`,
+        parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
         contents: inputText,
         mimeType: 'text/plain',
         sourceLanguageCode: "en",
         targetLanguageCode: language,
-        model: `projects/${nlbML.projectId}/locations/${nlbML.location}/models/${nlbML.modelId}`,
+        model: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1/models/${process.env.GOOGLE_MODEL_ID}`,
       };
     }
     else {
       return {
-        parent: `projects/${nlbML.projectId}/locations/${nlbML.location}`,
+        parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
         contents: inputText,
         mimeType: 'text/plain',
         sourceLanguageCode: 'en',
