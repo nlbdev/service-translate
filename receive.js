@@ -7,37 +7,37 @@ const amqp = require("amqplib/callback_api");
 
 // Imports the Google Cloud client library
 const { TranslationServiceClient } = require('@google-cloud/translate');
-const norwegianML = {
+const nlbML = {
   projectId: (process.env.NODE_ENV == "production" ? 707390927748 : 335447755176),
   modelId: 'TRL5591161762775826432',
   location: 'us-central1'
 };
-const swedishML = {
+const mtmML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
 };
-const danishML = {
+const notaML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
 };
-const finnishML = {
+const celiaML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
 };
-const icelandicML = {
+const hbsML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
 };
-const dutchML = {
+const dediconML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
 };
-const swissML = {
+const sbsML = {
   projectId: '',
   modelId: '',
   location: 'us-central1'
@@ -66,22 +66,22 @@ const console = require("./logger");
       // File not found, just return the text
       return text;
     }
-  }
+  };
 
   const GenerateRequest = (inputText, language) => {
     if (language == "no") {
       return {
-        parent: `projects/${norwegianML.projectId}/locations/${norwegianML.location}`,
+        parent: `projects/${nlbML.projectId}/locations/${nlbML.location}`,
         contents: inputText,
         mimeType: 'text/plain',
         sourceLanguageCode: "en",
         targetLanguageCode: language,
-        model: `projects/${norwegianML.projectId}/locations/${norwegianML.location}/models/${norwegianML.modelId}`,
+        model: `projects/${nlbML.projectId}/locations/${nlbML.location}/models/${nlbML.modelId}`,
       };
     }
     else {
       return {
-        parent: `projects/${norwegianML.projectId}/locations/${norwegianML.location}`,
+        parent: `projects/${nlbML.projectId}/locations/${nlbML.location}`,
         contents: inputText,
         mimeType: 'text/plain',
         sourceLanguageCode: 'en',
