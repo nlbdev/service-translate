@@ -8,9 +8,6 @@ const amqp = require("amqplib/callback_api");
 // Imports the Google Cloud client library
 const { TranslationServiceClient } = require('@google-cloud/translate');
 
-// Override console to enable papertrail
-const console = require("./logger");
-
 (() => {
   "use strict";
 

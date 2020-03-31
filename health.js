@@ -8,9 +8,6 @@
     const amqp = require("amqplib/callback_api");
 
     const init = async () => {
-        // Override console to enable papertrail
-        const console = require("./logger");
-
         const server = Hapi.server({
             port: AppConfig.PORT,
             host: AppConfig.HOST
