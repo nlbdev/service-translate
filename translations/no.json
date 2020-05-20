@@ -78,5 +78,13 @@
     {
         "search": " med lavere indeks ",
         "replace": " med nedre indeks "
+    },
+    {
+        "search": " : ",
+        "replace": " delt på "
+    },
+    {
+        "search": " punktoperatør",
+        "replace": " ganger"
     }
 ]

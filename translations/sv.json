@@ -14,5 +14,9 @@
     { 
         "search": " till kraften av",
         "replace": " upphöjd i"
+    },
+    {
+        "search": " hovudstad",
+        "replace": " versal"
     }
 ]
