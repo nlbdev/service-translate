@@ -1,17 +1,39 @@
 {
   "name": "service-translate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A microservice for translating strings",
-  "main": "receive.js",
+  "main": "dist/app.js",
   "dependencies": {
+    "@airbrake/node": "^1.1.2",
     "@google-cloud/translate": "^5.1.4",
-    "@hapi/hapi": "^18.3.1",
-    "airbrake-js": "^2.0.0-beta.3",
-    "amqplib": "^0.5.5",
-    "dotenv": "^8.2.0"
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^18.4.1",
+    "@hapi/joi": "^15.1.1",
+    "@types/cheerio": "^0.22.18",
+    "@types/hapi__boom": "^9.0.1",
+    "@types/hapi__hapi": "^19.0.3",
+    "@types/hapi__iron": "^6.0.1",
+    "@types/node": "^14.0.13",
+    "@types/uuid": "^7.0.3",
+    "axios": "^0.19.2",
+    "chalk": "^2.4.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cross-fetch": "^3.0.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "he": "^1.2.0",
+    "http": "^0.0.0",
+    "jquery": "^3.5.0",
+    "jsdom": "^15.2.1",
+    "typescript": "^3.9.2",
+    "uuid": "^8.0.0",
+    "xml": "^1.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "nodemon dist/app.js",
+    "watch": "tsc -w",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
