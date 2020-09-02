@@ -1,90 +1,226 @@
 [
-    { 
-        "search": " venstre parentes matrisestart",
-        "replace": " matrise start"
-    },
-    { 
-        "search": " venstre parentes matrise start",
-        "replace": " matrise start"
-    },
-    { 
-        "search": " matrise slutt høyre parentes",
-        "replace": " matrise slutt"
-    },
-    { 
-        "search": " matrix slutt høyre parentes",
-        "replace": " matrise slutt"
-    },
-    { 
-        "search": " funksjonsenden",
-        "replace": " funksjon slutt"
-    },
-    { 
-        "search": " funksjonen slutten",
-        "replace": " funksjon slutt"
-    },
-    { 
-        "search": " formelende",
-        "replace": " formel slutt"
-    },
-    { 
-        "search": " brøkden ende",
-        "replace": " brøk slutt"
-    },
-    { 
-        "search": " brøkdel slutt",
-        "replace": " brøk slutt"
-    },
-    { 
-        "search": " ende",
-        "replace": " slutt"
-    },
-    { 
-        "search": " til kraften i",
-        "replace": " opphøyd i"
-    },
-    { 
-        "search": " til kraften til",
-        "replace": " opphøyd i"
-    },
-    { 
-        "search": " til kraften av",
-        "replace": " opphøyd i"
-    },
-    { 
-        "search": " opphøyd i 2",
-        "replace": " i annen"
-    },
-    { 
-        "search": " kapital",
-        "replace": " stor"
-    },
-    { 
-        "search": " stor grader",
-        "replace": " grader"
-    },
-    { 
-        "search": " slutt ",
-        "replace": " slutt, "
+    {
+        "search": " left parenthesis matrix start,",
+        "replace": " matrise start,"
     },
     {
-        "search": " lett ",
-        "replace": " lys "
+        "search": " the matrix contains ",
+        "replace": " matrisen inneholder "
     },
     {
-        "search": " nærmer seg ",
-        "replace": " går mot "
-    }, 
+        "search": "physics formula ",
+        "replace": "fysikkformel "
+    },
     {
-        "search": " med lavere indeks ",
+        "search": "chemical formula ",
+        "replace": "kjemisk formel "
+    },
+    {
+        "search": " contour integral ",
+        "replace": " konturintegralet av "
+    },
+    {
+        "search": " the integral ",
+        "replace": " integralen "
+    },
+    {
+        "search": " differential with respect to ",
+        "replace": " differensial med hensyn til "
+    },
+    {
+        "search": " the natural logarithm of ",
+        "replace": " den naturlige logaritmen av "
+    },
+    {
+        "search": " the function ",
+        "replace": " funksjonen "
+    },
+    {
+        "search": " fraction with counter ",
+        "replace": " brøk med teller "
+    },
+    {
+        "search": " and denominator ",
+        "replace": " og med nevner "
+    },
+    {
+        "search": " the square root of ",
+        "replace": " kvadratroten av "
+    },
+    {
+        "search": " to the power of ",
+        "replace": " opphøyd i "
+    },
+    {
+        "search": " of the expression ",
+        "replace": " av uttrykket "
+    },
+    {
+        "search": " limit with the lower index ",
+        "replace": " grenseverdi med nedre grense "
+    },
+    {
+        "search": " with the lower index ",
         "replace": " med nedre indeks "
     },
     {
-        "search": " : ",
-        "replace": " delt på "
+        "search": " capital degrees C ",
+        "replace": " grader celcius "
     },
     {
-        "search": " punktoperatør",
-        "replace": " ganger"
+        "search": " capital degrees F ",
+        "replace": " grader fahrenheit "
+    },
+    {
+        "search": " capital degrees ",
+        "replace": " grader "
+    },
+    {
+        "search": " approaches ",
+        "replace": " som går mot "
+    },
+    {
+        "search": " the double derivative ",
+        "replace": " den dobbelderiverte "
+    },
+    {
+        "search": " double derivative ",
+        "replace": " dobbelderivert "
+    },
+    {
+        "search": " the derivative ",
+        "replace": " den deriverte "
+    },
+    {
+        "search": " derivative ",
+        "replace": " derivert "
+    },
+    {
+        "search": " vector ",
+        "replace": " vektor "
+    },
+    {
+        "search": " and with the upper limit ",
+        "replace": " og med øvre grense "
+    },
+    {
+        "search": " with the lower limit ",
+        "replace": " med nedre grense "
+    },
+    {
+        "search": " limit ",
+        "replace": " grense "
+    },
+    {
+        "search": " function ",
+        "replace": " funksjon "
+    },
+    {
+        "search": " of ",
+        "replace": " av "
+    },
+    {
+        "search": " rows",
+        "replace": " rader"
+    },
+    {
+        "search": " contains ",
+        "replace": " inneholder "
+    },
+    {
+        "search": " row ",
+        "replace": " rad "
+    },
+    {
+        "search": " cells",
+        "replace": " celler"
+    },
+    {
+        "search": " cell ",
+        "replace": " celle "
+    },
+    {
+        "search": " and ",
+        "replace": " og "
+    },
+    {
+        "search": " plus ",
+        "replace": " pluss "
+    },
+    {
+        "search": " times ",
+        "replace": " ganger "
+    },
+    {
+        "search": " fraction ",
+        "replace": " brøk "
+    },
+    {
+        "search": " index ",
+        "replace": " indeks "
+    },
+    {
+        "search": " square root ",
+        "replace": " kvadratrot "
+    },
+    {
+        "search": " root ",
+        "replace": " rot "
+    },
+    {
+        "search": " expression ",
+        "replace": " uttrykk "
+    },
+    {
+        "search": " sine ",
+        "replace": " sinus "
+    },
+    {
+        "search": " capital ",
+        "replace": " stor "
+    },
+    {
+        "search": " alpha ",
+        "replace": " alfa "
+    },
+    {
+        "search": " K ",
+        "replace": " kelvin "
+    },
+    {
+        "search": " equals ",
+        "replace": " er lik, "
+    },
+    {
+        "search": "formula ",
+        "replace": "formel "
+    },
+    {
+        "search": " end ",
+        "replace": " slutt, "
+    },
+    {
+        "search": " end",
+        "replace": " slutt"
+    },
+    {
+        "search": " uttrykk slutt, derivert",
+        "replace": " uttrykk slutt,"
+    },
+    {
+        "search": " uttrykk slutt, dobbelderivert",
+        "replace": " uttrykk slutt,"
+    },
+    {
+        "search": " uttrykk slutt, trippelderivert",
+        "replace": " uttrykk slutt,"
+    },
+    {
+        "search": " matrix slutt, right parenthesis",
+        "replace": " matrise slutt,"
+    },
+    {
+        "search": " opphøyd i 2 ",
+        "replace": " i annen "
     }
 ]
