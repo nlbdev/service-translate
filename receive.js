@@ -31,29 +31,17 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
   };
 
   const GenerateRequest = (inputText, language) => {
-    if (language == "no") {
-      return {
-        parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
-        contents: inputText,
-        mimeType: 'text/plain',
-        sourceLanguageCode: "en",
-        targetLanguageCode: language,
-        model: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1/models/${process.env.GOOGLE_MODEL_ID}`,
-      };
-    }
-    else {
-      return {
-        parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
-        contents: inputText,
-        mimeType: 'text/plain',
-        sourceLanguageCode: 'en',
-        targetLanguageCode: language,
-      };
-    }
+    return {
+      parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
+      contents: inputText,
+      mimeType: 'text/plain',
+      sourceLanguageCode: 'en',
+      targetLanguageCode: language,
+    };
   };
 
   const TranslateText = async (inputText, toLanguage) => {
-    if (toLanguage == "en") return PostProcessText(inputText.join(" "), toLanguage);
+    if (toLanguage == "en" || toLanguage == "no") return PostProcessText(inputText.join(" "), toLanguage);
     const translationClient = new TranslationServiceClient();
 
     // Construct request
