@@ -1,5 +1,13 @@
 [
     {
+        "search": " left parenthesis ",
+        "replace": " venstreparentes "
+    },
+    {
+        "search": " right parenthesis ",
+        "replace": " høyreparentes "
+    },
+    {
         "search": " divided by ",
         "replace": " delt på "
     },
@@ -57,6 +65,10 @@
     },
     {
         "search": " to the power of ",
+        "replace": " opphøyd i "
+    },
+    {
+        "search": " opphøyd i to the power of ",
         "replace": " opphøyd i "
     },
     {
@@ -230,5 +242,9 @@
     {
         "search": " opphøyd i 2 ",
         "replace": " i annen "
+    },
+    {
+        "search": " stor et cetera ",
+        "replace": " osv. "
     }
 ]
