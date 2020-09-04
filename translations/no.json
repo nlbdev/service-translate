@@ -1,5 +1,13 @@
 [
     {
+        "search": " divided by ",
+        "replace": " delt på "
+    },
+    {
+        "search": " dot operator ",
+        "replace": " ganger "
+    },
+    {
         "search": " left parenthesis matrix start,",
         "replace": " matrise start,"
     },
