@@ -1,42 +1,14 @@
 [
-    { 
-        "search": " expression end derivative",
-        "replace": " expression end"
-    },
-    { 
-        "search": " expression end double derivative",
-        "replace": " expression end"
-    },
-    { 
-        "search": " left parenthesis matrix start,",
-        "replace": " matrix start"
-    },
-    { 
-        "search": " matrix end right parenthesis",
-        "replace": " matrix end"
-    },
-    {
-        "search": " capital degrees",
-        "replace": " degrees"
-    },
-    {
-        "search": " to the power of 2",
-        "replace": " squared"
-    },
-    {
-        "search": " equals",
-        "replace": ", equals"
-    },
-    {
-        "search": " end ",
-        "replace": " end, "
-    },
-    {
-        "search": " start ",
-        "replace": " start, "
-    },
-    {
-        "search": " dot operator",
-        "replace": " times"
-    }
+    { "search": " expression end derivative", "replace": " expression end," },
+    { "search": " expression end double derivative", "replace": " expression end," },
+    { "search": " left parenthesis matrix start,", "replace": " matrix start," },
+    { "search": " matrix end right parenthesis", "replace": " matrix end," },
+    { "search": " capital degrees", "replace": " degrees" },
+    { "search": " to the power of to the power of", "replace": " to the power of" },
+    { "search": " to the power of 2", "replace": " squared" },
+    { "search": " equals", "replace": ", equals" },
+    { "search": " end ", "replace": " end, " },
+    { "search": " end", "replace": " end" },
+    { "search": " start ", "replace": " start, " },
+    { "search": " dot operator", "replace": " times" }
 ]
