@@ -161,5 +161,6 @@
     { "search": " product", "replace": " produkt" },
     { "search": " of", "replace": " av" },
     { "search": " and", "replace": " og" },
-    { "search": " or", "replace": " eller" }
+    { "search": " or", "replace": " eller" },
+    { "search": ",,", "replace": "," }
 ]

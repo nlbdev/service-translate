@@ -10,5 +10,6 @@
     { "search": " end ", "replace": " end, " },
     { "search": " end", "replace": " end" },
     { "search": " start ", "replace": " start, " },
-    { "search": " dot operator", "replace": " times" }
+    { "search": " dot operator", "replace": " times" },
+    { "search": ",,", "replace": "," }
 ]
