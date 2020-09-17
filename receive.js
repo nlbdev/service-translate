@@ -17,15 +17,14 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
     try {
       const postProcess = require(`./translations/${lang}.json`);
       postProcess.forEach(p => {
-        var regexp = new RegExp(p.search, 'g');
-        text = text.replace(regexp, p.replace);
-        regexp = null;
+        text = text.split(p.search).join(p.replace);
       });
-  
+
       return text;
     }
     catch (ex) {
       // File not found, just return the text
+      console.error(ex);
       return text;
     }
   };
