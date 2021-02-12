@@ -40,7 +40,7 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
   };
 
   const TranslateText = async (inputText, toLanguage) => {
-    if (toLanguage == "en" || toLanguage == "no") return PostProcessText(inputText.join(" "), toLanguage);
+    if (toLanguage == "en" || toLanguage == "no" || toLanguage == "nb" || toLanguage == "nn") return PostProcessText(inputText.join(" "), toLanguage);
     const translationClient = new TranslationServiceClient();
 
     // Construct request
