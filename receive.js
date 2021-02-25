@@ -16,8 +16,11 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
   const PostProcessText = (text, lang) => {
     try {
       const postProcess = require(`./translations/${lang}.json`);
+
       postProcess.forEach(p => {
-        text = text.split(p.search).join(p.replace);
+        var regexString = `\\b(${p.search})\\b`;
+        var re = new RegExp(regexString, "g");
+        text = text.replace(re, p.replace);
       });
 
       return text;

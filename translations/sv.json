@@ -1,22 +1,22 @@
 [
     { 
-        "search": " jag",
-        "replace": " i"
+        "search": "jag",
+        "replace": "i"
     },
     { 
-        "search": " till kraften i",
-        "replace": " upphöjd i"
+        "search": "till kraften i",
+        "replace": "upphöjd i"
     },
     { 
-        "search": " till kraften til",
-        "replace": " upphöjd i"
+        "search": "till kraften til",
+        "replace": "upphöjd i"
     },
     { 
-        "search": " till kraften av",
-        "replace": " upphöjd i"
+        "search": "till kraften av",
+        "replace": "upphöjd i"
     },
     {
-        "search": " hovudstad",
-        "replace": " versal"
+        "search": "hovudstad",
+        "replace": "versal"
     }
 ]

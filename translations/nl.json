@@ -1,6 +1,6 @@
 [
     {
-        "search": " hoofdstad",
-        "replace": " hoofdletter"
+        "search": "hoofdstad",
+        "replace": "hoofdletter"
     }
 ]
