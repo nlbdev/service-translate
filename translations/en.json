@@ -18,8 +18,5 @@
     { "search": "end", "replace": "end"},
     { "search": "start ", "replace": "start, "},
     { "search": "dot operator", "replace": "times"},
-    { "search": ", ,", "replace": ","},
-    { "search": ",,", "replace": ","},
-    { "search": " ,", "replace": ","},
     { "search": "undefined", "replace": ""}
 ]

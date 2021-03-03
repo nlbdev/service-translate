@@ -182,6 +182,5 @@
     { "search": "and", "replace": "og"},
     { "search": "or", "replace": "eller"},
     { "search": "with", "replace": "med"},
-    { "search": ",,", "replace": ","},
     { "search": "undefined", "replace": ""}
 ]

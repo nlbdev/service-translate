@@ -23,6 +23,12 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
         text = text.replace(re, p.replace);
       });
 
+      // Fixes punctuation errors
+      const punctuations = require(`./translations/all.json`);
+      punctuations.forEach(s => {
+        text = text.split(s.search).join(s.replace);
+      });
+
       return text;
     }
     catch (ex) {
