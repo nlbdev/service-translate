@@ -5,5 +5,7 @@
     { "search": ", ,", "replace": ","},
     { "search": ",,", "replace": ","},
     { "search": " ,,", "replace": ","},
-    { "search": " ,,", "replace": ","}
+    { "search": " ,,", "replace": ","},
+    { "search": ", double derivative,", "replace": ", "},
+    { "search": ", derivative,", "replace": ", "}
 ]

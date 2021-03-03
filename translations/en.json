@@ -1,8 +1,6 @@
 [
     { "search": "expression end derivative", "replace": "expression end,"},
     { "search": "expression end double derivative", "replace": "expression end,"},
-    { "search": ", double derivative,", "replace": ", "},
-    { "search": ", derivative,", "replace": ", "},
     { "search": "left parenthesis matrix start,", "replace": "matrix start,"},
     { "search": "matrix end right parenthesis", "replace": "matrix end,"},
     { "search": "capital degrees", "replace": "degrees"},
