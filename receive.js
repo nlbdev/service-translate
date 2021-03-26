@@ -6,7 +6,7 @@ const AppConfig = require("./configurations/appConfig");
 const amqp = require("amqplib/callback_api");
 
 // Imports the Google Cloud client library
-const { TranslationServiceClient } = require('@google-cloud/translate');
+// const { TranslationServiceClient } = require('@google-cloud/translate');
 
 (() => {
   "use strict";
@@ -38,36 +38,36 @@ const { TranslationServiceClient } = require('@google-cloud/translate');
     }
   };
 
-  const GenerateRequest = (inputText, language) => {
-    return {
-      parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
-      contents: inputText,
-      mimeType: 'text/plain',
-      sourceLanguageCode: 'en',
-      targetLanguageCode: language,
-    };
-  };
+  // const GenerateRequest = (inputText, language) => {
+  //   return {
+  //     parent: `projects/${process.env.GOOGLE_PROJECT_ID}/locations/us-central1`,
+  //     contents: inputText,
+  //     mimeType: 'text/plain',
+  //     sourceLanguageCode: 'en',
+  //     targetLanguageCode: language,
+  //   };
+  // };
 
   const TranslateText = async (inputText, toLanguage) => {
-    if (toLanguage == "en" || toLanguage == "no" || toLanguage == "nb" || toLanguage == "nn") return PostProcessText(inputText.join(" "), toLanguage);
-    const translationClient = new TranslationServiceClient();
+    return PostProcessText(inputText.join(" "), toLanguage);
+    // const translationClient = new TranslationServiceClient();
 
-    // Construct request
-    const request = GenerateRequest(inputText, toLanguage);
+    // // Construct request
+    // const request = GenerateRequest(inputText, toLanguage);
 
-    try {
-      // Run request
-      let [t] = await translationClient.translateText(request);
+    // try {
+    //   // Run request
+    //   let [t] = await translationClient.translateText(request);
 
-      let translatedArray = [];
-      t.translations.forEach(txt => {
-        translatedArray.push(txt.translatedText);
-      });
-      let translatedText = translatedArray.join(" ");
-      return PostProcessText(translatedText, toLanguage);
-    } catch (error) {
-      return error;
-    }
+    //   let translatedArray = [];
+    //   t.translations.forEach(txt => {
+    //     translatedArray.push(txt.translatedText);
+    //   });
+    //   let translatedText = translatedArray.join(" ");
+    //   return PostProcessText(translatedText, toLanguage);
+    // } catch (error) {
+    //   return error;
+    // }
   };
 
   // Give the MQ 10 seconds to get started
