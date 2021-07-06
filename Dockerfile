@@ -15,4 +15,4 @@ RUN yarn
 COPY . .
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=1m CMD http_proxy="" https_proxy="" curl --fail http://${HOST-0.0.0.0}:${PORT:-443}/health || exit 1
-CMD [ "node", "receive.js" ]
+CMD [ "node", "index.js" ]

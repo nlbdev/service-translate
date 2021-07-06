@@ -1,18 +1,16 @@
 {
   "name": "service-translate",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A microservice for translating strings",
-  "main": "receive.js",
+  "main": "index.js",
   "dependencies": {
-    "@google-cloud/translate": "^5.1.4",
+    "@airbrake/node": "^1.0.6",
     "@hapi/hapi": "^19.1.1",
-    "airbrake-js": "^2.0.0-beta.3",
-    "amqplib": "^0.5.5",
+    "@hapi/joi": "^15.0.1",
     "dotenv": "^8.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon receive.js"
+    "serve": "nodemon index.js"
   },
   "repository": {
     "type": "git",
