@@ -1,4 +1,5 @@
 [
+    { "search": "prior to", "replace": "før"},
     { "search": "is less than", "replace": "er mindre enn"},
     { "search": "is more than", "replace": "er større enn"},
     { "search": "the derivative of the expression", "replace": "den deriverte av uttrykket"},
