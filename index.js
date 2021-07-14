@@ -70,15 +70,13 @@ const Joi = require("@hapi/joi");
             options: {
                 validate: {
                     payload: {
-                        text: {
-                            words: Joi.array().items(Joi.string()).required()
-                        },
+                        text: Joi.string().required(),
                         to: Joi.string().required()
                     }
                 }
             },
             handler: async (request, h)  => {
-                return TranslateText(request.payload.text.words, request.payload.to).then(res => res).catch(err => err);
+                return TranslateText(request.payload.text.split(" "), request.payload.to).then(res => res).catch(err => err);
             }
         });
 
