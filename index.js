@@ -60,7 +60,7 @@ const Joi = require("@hapi/joi");
             method: 'GET',
             path: '/health',
             handler: async (request, h) => {
-                return { timestamp: new Date().toISOString() };
+                return { name: Pack.name, version: Pack.version, timestamp: new Date().toISOString() };
             }
         });
         console.info(`${Pack.name} health service is running on ${server.info.uri}/health`);
